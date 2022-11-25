@@ -262,7 +262,7 @@ namespace LightReflectiveMirror
                                 _clientProxy.dataReceived += ClientProcessProxyData;
                             }
 
-                            if (useNATPunch && attemptNatPunch)
+                            /*if (useNATPunch && attemptNatPunch)
                             {
                                 if (ip == LOCALHOST)
                                     _directConnectModule.JoinServer(LOCALHOST, port + 1);
@@ -271,6 +271,9 @@ namespace LightReflectiveMirror
                             }
                             else
                                 _directConnectModule.JoinServer(ip, port);
+							*/
+							//客机_clientProxy端口为_NATIP.Port - 1，则直连模块需要一致的端口才能连上_clientProxy
+							_directConnectModule.JoinServer(LOCALHOST, _NATIP.Port - 1);
                         }
 
                         break;

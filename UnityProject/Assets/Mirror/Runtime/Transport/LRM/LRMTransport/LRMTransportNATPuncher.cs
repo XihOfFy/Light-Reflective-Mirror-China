@@ -23,7 +23,8 @@ namespace LightReflectiveMirror
             var data = _NATPuncher.EndReceive(result, ref newClientEP);
             _NATPuncher.BeginReceive(new AsyncCallback(RecvData), _NATPuncher);
 
-            if (!newClientEP.Address.Equals(_relayPuncherIP.Address))
+            //if (!newClientEP.Address.Equals(_relayPuncherIP.Address))
+			if (!newClientEP.Equals(_relayPuncherIP))//保证同一局域网开启本地中继服务，也能同时连接同一局域网的多个玩家调试
             {
                 if (_isServer)
                 {
